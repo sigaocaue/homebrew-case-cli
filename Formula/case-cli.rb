@@ -9,10 +9,12 @@ class CaseCli < Formula
   sha256 "3e26356488105f994ee1389e34317941163674ba2c2398c8e8e8f1df79c7e12d"
   license "MIT"
 
-  depends_on "python@3"
+  depends_on "python@3.13"
 
   def install
     virtualenv_install_with_resources
+    bash_completion.install buildpath/"case_cli/completions/case-cli.bash" => "case-cli"
+    zsh_completion.install buildpath/"case_cli/completions/case-cli.zsh" => "_case-cli"
   end
 
   test do
